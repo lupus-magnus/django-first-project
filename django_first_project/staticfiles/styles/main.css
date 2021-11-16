@@ -1,0 +1,19 @@
+body {
+  background-color: lightblue;
+}
+@keyframes myAnim {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+h1,
+h3 {
+  color: palevioletred;
+  animation-name: myAnim;
+  animation-duration: 300ms;
+}
