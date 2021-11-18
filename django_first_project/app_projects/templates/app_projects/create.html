@@ -1,0 +1,29 @@
+{% extends 'main.html' %} {% load bootstrap static %} {% block content%}
+<div>
+  <h2>Create a new project</h2>
+  <div class="row container">
+    <form class="col-12 col-lg-6 mb-5">
+      {{form | bootstrap}}
+      <input class="btn btn-success btn-block" type="submit" value="Create!" />
+    </form>
+    <section class="col-lg-6 col-xm-12 d-none d-lg-block">
+      <div
+        class="
+          d-flex
+          justify-content-center
+          align-items-center
+          d-none d-lg-block
+          container
+          p-6
+          hidden-sm
+        "
+      >
+        <img
+          class="pop-anim img-fluid"
+          src="{% static 'assets/images/work.svg' %}"
+        />
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock content %}

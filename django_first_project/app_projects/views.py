@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .forms import CreateProjectForm
 
 # Create your views here.
 # I can use Views as functions or classes. Using the function option,
@@ -35,3 +35,10 @@ def project(request, pk):
             selected_project = i
     context = {"project": selected_project}
     return render(request, "app_projects/project.html", context)
+
+
+def create_project(request):
+    form = CreateProjectForm()
+    context = {"form": form}
+
+    return render(request, "app_projects/create.html", context)

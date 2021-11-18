@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app_projects.apps.AppProjectsConfig",
+    "bootstrapform",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
