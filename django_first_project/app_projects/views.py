@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import CreateProjectForm
+from .models import Project 
 
 # Create your views here.
 # I can use Views as functions or classes. Using the function option,
@@ -23,16 +24,14 @@ projects_list = [
 
 
 def projects(request):
-
-    context = {"projects": projects_list}
+    my_projects = Project.objects.all()
+    #context = {"projects": projects_list}
+    context = {"projects": my_projects}
     return render(request, "app_projects/projects.html", context)
 
 
 def project(request, pk):
-    selected_project = None
-    for i in projects_list:
-        if str(i["id"]) == str(pk):
-            selected_project = i
+    selected_project = Project.objects.get(id=pk)
     context = {"project": selected_project}
     return render(request, "app_projects/project.html", context)
 

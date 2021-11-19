@@ -1,23 +1,27 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
 
 <h2>Projects:</h2>
+
 <div class="my-5 row container d-flex flex-row">
   {% for project in projects%}
-  <div style="width: 20rem" class="card m-2 p-3">
-    <img
-      class="card-img-top"
-      src="{% static 'assets/images/work.png' %}"
-      alt="Card image cap"
-    />
-    <div class="card-body">
-      <h3 class="card-title mb-4">{{project.title}}</h3>
-      <p class="card-text mb-4">{{project.description}}</p>
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-secondary mr-3">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+  <a href="/project/{{project.id}}">
+    <div style="width: 20rem" class="card m-2 p-3">
+      <img
+        class="card-img-top"
+        src="{% static 'assets/images/default_project.svg' %}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h3 class="card-title mb-4">{{project.title}}</h3>
+        <p class="card-text mb-4">{{project.description}}</p>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-secondary mr-3">Edit</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
+
   {% endfor %}
 </div>
 {% endblock content %}

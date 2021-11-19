@@ -10,7 +10,8 @@
 }
 
 a {
-  color: white;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .pop-anim {
