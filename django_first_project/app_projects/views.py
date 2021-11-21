@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .forms import CreateProjectForm
+from django.shortcuts import render, redirect
+from .forms import CreateProjectForm, ProjectForm
 from .models import Project 
 
 # Create your views here.
@@ -25,7 +25,6 @@ projects_list = [
 
 def projects(request):
     my_projects = Project.objects.all()
-    #context = {"projects": projects_list}
     context = {"projects": my_projects}
     return render(request, "app_projects/projects.html", context)
 
@@ -37,7 +36,36 @@ def project(request, pk):
 
 
 def create_project(request):
-    form = CreateProjectForm()
-    context = {"form": form}
+    form = ProjectForm()
 
-    return render(request, "app_projects/create.html", context)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {"form": form}
+    return render(request, "app_projects/project-form.html", context)
+
+def edit_project(request,pk):
+    selected_project = Project.objects.get(id=pk)
+    form = ProjectForm(instance=selected_project)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=selected_project)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {"form": form}
+    return render(request, "app_projects/project-form.html", context)
+
+def delete_project(request,pk):
+    selected_project = Project.objects.get(id=pk)
+    context = {"project": selected_project}
+
+    if request.method == 'POST':
+        selected_project.delete()
+        return redirect('/')
+    
+    return render(request, "app_projects/delete.html", context)

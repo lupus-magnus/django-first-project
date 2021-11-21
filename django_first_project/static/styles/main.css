@@ -14,14 +14,27 @@ a {
   text-decoration: inherit;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #c87325;
+}
+
 .pop-anim {
   animation-name: myAnim;
   animation-duration: 300ms;
+  animation-fill-mode: backwards;
 }
+
+.delay-anim {
+  animation-delay: 300ms;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #343a40;
 }
 main {
   flex: 1;
