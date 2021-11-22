@@ -52,14 +52,13 @@
     </nav>
     <div class="container px-0">
       <!-- <img
+        height="200px"
         class="img-fluid px-0"
         src="{% static 'assets/images/cover2.png' %}"
       /> -->
     </div>
     <main class="container bg-light">
-      <section class="mt-5 p-4">
-        {% block content %} {% endblock content %}
-      </section>
+      <section class="p-4">{% block content %} {% endblock content %}</section>
     </main>
 
     <footer class="bg-secondary">
