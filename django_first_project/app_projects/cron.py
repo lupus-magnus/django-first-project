@@ -1,4 +1,6 @@
 from .models import Project
+from apscheduler.schedulers.background import BackgroundScheduler
+
 
 default_projects = [
     {
@@ -19,4 +21,9 @@ def reset_projects():
     Project.objects.all().delete()
     for project in default_projects:
         Project.objects.create(title=project["title"], description=project["description"])
+
+def start():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(reset_projects, 'interval', minutes=1)
+    scheduler.start()
 
