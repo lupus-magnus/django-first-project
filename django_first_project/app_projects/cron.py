@@ -24,6 +24,6 @@ def reset_projects():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(reset_projects, 'interval', minutes=1)
+    scheduler.add_job(reset_projects, 'interval', minutes=45)
     scheduler.start()
 
